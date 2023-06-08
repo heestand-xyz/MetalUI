@@ -1,5 +1,13 @@
 # MetalUI
 
+## Install
+
+```swift
+.package(url: "https://github.com/heestand-xyz/MetalUI", from: "0.0.1")
+```
+
+## Green Screen
+
 ```swift
 
 import SwiftUI
