@@ -6,7 +6,7 @@
 #include <metal_stdlib>
 using namespace metal;
 
-#import "../../Shared/hsv_header.metal"
+#import "../../Shared/Effects/hsv_header.metal"
 
 [[ stitchable ]] half4 chromaKey(float2 position,
                                  half4 color,
