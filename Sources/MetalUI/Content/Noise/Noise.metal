@@ -31,28 +31,29 @@ using namespace metal;
     
     float ux = ((u - 0.5) * aspectRatio - (offset.x / height)) / scale;
     float vy = ((v - 0.5) - (offset.y / height)) / scale;
+    float wz = zOffset / height;
     
     float noise;
-    if (isRandom > 0.5) {
+    if (isRandom == 1.0) {
         Loki loki_rnd = Loki(seed, u * max_res, v * max_res);
         noise = loki_rnd.rand();
     } else {
-        noise = octave_noise_3d(octaves, 0.5, 1.0, ux, vy, zOffset + seed * 100);
+        noise = octave_noise_3d(octaves, 0.5, 1.0, ux, vy, wz + seed * 100);
         noise = noise * 0.5 + 0.5;
     }
     
     float noiseGreen;
     float noiseBlue;
-    if (isColored > 0.5) {
-        if (isRandom > 0.5) {
+    if (isColored == 1.0) {
+        if (isRandom == 1.0) {
             Loki loki_rnd_g = Loki(seed + 100, u * max_res, v * max_res);
             noiseGreen = loki_rnd_g.rand();
             Loki loki_rnd_b = Loki(seed + 200, u * max_res, v * max_res);
             noiseBlue = loki_rnd_b.rand();
         } else {
-            noiseGreen = octave_noise_3d(octaves, 0.5, 1.0, ux, vy, zOffset + 10 + seed);
+            noiseGreen = octave_noise_3d(octaves, 0.5, 1.0, ux, vy, wz + 10 + seed);
             noiseGreen = noiseGreen * 0.5 + 0.5;
-            noiseBlue = octave_noise_3d(octaves, 0.5, 1.0, ux, vy, zOffset + 20 + seed);
+            noiseBlue = octave_noise_3d(octaves, 0.5, 1.0, ux, vy, wz + 20 + seed);
             noiseBlue = noiseBlue * 0.5 + 0.5;
         }
     }
