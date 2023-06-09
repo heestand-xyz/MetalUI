@@ -8,21 +8,13 @@ using namespace metal;
 
 #import "../../Shared/hsv_header.metal"
 
-struct VertexOut {
-    float4 position [[position]];
-    float2 texCoord;
-};
-
-struct Uniforms {
-    bool premultiply;
-    packed_float4 keyColor;
-    float range;
-    float softness;
-    float edgeDesaturation;
-    float alphaCrop;
-};
-
-[[ stitchable ]] half4 chromaKey(float2 position, half4 color, half4 keyColor, float range, float softness, float edgeDesaturation, float alphaCrop) {
+[[ stitchable ]] half4 chromaKey(float2 position,
+                                 half4 color,
+                                 half4 keyColor,
+                                 float range,
+                                 float softness,
+                                 float edgeDesaturation,
+                                 float alphaCrop) {
     
     float3 ck_hsv = rgb2hsv(keyColor.r, keyColor.g, keyColor.b);
     
