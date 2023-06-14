@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SizeReader<Content: View>: View {
     
+    @ViewBuilder
     let content: (CGSize) -> Content
     
     @State private var size: CGSize = CGSize(width: 1.0, height: 1.0)
