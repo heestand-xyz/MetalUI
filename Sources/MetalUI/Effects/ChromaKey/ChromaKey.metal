@@ -44,9 +44,8 @@ using namespace metal;
     float invertedAlphaCrop = 1.0 - min(1.0, max(0.0, alphaCrop));
     ck = min(1.0, max(0.0, 1.0 - ((1.0 - ck) / invertedAlphaCrop)));
     
-//    if (premultiply) {
-        ck_c *= ck;
-//    }
+    // premultiply
+    ck_c *= ck;
     
     float a = ck * c.a;
     
