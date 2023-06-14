@@ -5,9 +5,9 @@ import AppKit
 import UIKit
 #endif
 
-public extension CGFloat {
+extension CGFloat {
     
-    static var pixelsPerPoint: CGFloat {
+    public static var pixelsPerPoint: CGFloat {
         #if os(macOS)
         return NSScreen.main?.backingScaleFactor ?? 1.0
         #else
