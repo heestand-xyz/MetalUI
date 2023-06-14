@@ -96,6 +96,38 @@ struct ContentView: View {
 }
 ```
 
+## Feedback
+
+![](https://github.com/heestand-xyz/MetalUI-Docs/raw/main/Assets/Effects/Feedback/MetalUI%20Feedback.mov)
+
+```swift
+import SwiftUI
+import MetalUI
+
+struct ContentView: View {
+    
+    var body: some View {
+        Text("Hello, World!")
+            .foregroundStyle(.white)
+            .frame(maxWidth: .infinity,
+                   maxHeight: .infinity)
+            .feedback { source, loop in
+                ZStack {
+                    source
+                        .opacity(0.1)
+                    loop
+                        .scaleEffect(1.01)
+                        .opacity(0.99)
+                }
+            }
+    }
+}
+
+#Preview {
+    ContentView()
+}
+```
+
 ## Noise
 
 <img src="https://github.com/heestand-xyz/MetalUI-Docs/blob/main/Assets/Content/Noise/MetalUI%20Noise.png?raw=true" width=200/>
