@@ -1,3 +1,5 @@
+<img src="https://github.com/heestand-xyz/MetalUI-Docs/blob/main/Assets/MetalUI%20Icon.png?raw=true" width=128/>
+
 # MetalUI
 
 ## Install
