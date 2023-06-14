@@ -38,7 +38,7 @@ struct ContentView: View {
 
 ## Kaleidoscope
 
-![](https://github.com/heestand-xyz/MetalUI-Docs/raw/main/Assets/Effects/Kaleidoscope/MetalUI%20Kaleidoscope.mov)
+https://github.com/heestand-xyz/MetalUI/assets/7947442/3eeb4a40-b578-4eb7-9700-3e34effe8e3d
 
 ```swift
 import SwiftUI
