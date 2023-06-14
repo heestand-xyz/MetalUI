@@ -8,6 +8,8 @@
 
 ## Circle Blur
 
+![](https://github.com/heestand-xyz/MetalUI-Docs/raw/main/Assets/Effects/Circle%20Blur/MetalUI%20Circle%20Blur.mov)
+
 ```swift
 import SwiftUI
 import MetalUI
@@ -36,6 +38,9 @@ struct ContentView: View {
 
 ## Green Screen
 
+| <img src="https://github.com/heestand-xyz/MetalUI-Docs/blob/main/Assets/Effects/Chroma%20Key/MetalUI%20Green%20Screen%20A.jpeg?raw=true" width=200/> | 
+<img src="https://github.com/heestand-xyz/MetalUI-Docs/blob/main/Assets/Effects/Chroma%20Key/MetalUI%20Green%20Screen%20B.jpeg?raw=true" width=200/> | 
+
 ```swift
 
 import SwiftUI
@@ -59,10 +64,11 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
-
 ```
 
 ## Kaleidoscope
+
+![](https://github.com/heestand-xyz/MetalUI-Docs/raw/main/Assets/Effects/Kaleidoscope/MetalUI%20Kaleidoscope.mov)
 
 ```swift
 import SwiftUI
@@ -86,4 +92,24 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+```
+
+## Noise
+
+<img src="https://github.com/heestand-xyz/MetalUI-Docs/blob/main/Assets/Content/Noise/MetalUI%20Noise.png?raw=true" width=200/>
+
 ```swift
+import SwiftUI
+import MetalUI
+
+struct ContentView: View {
+    
+    var body: some View {
+        Noise()
+    }
+}
+
+#Preview {
+    ContentView()
+}
+```
