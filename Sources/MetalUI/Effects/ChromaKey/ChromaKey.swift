@@ -1,6 +1,6 @@
 import SwiftUI
 
-public struct MUIChromaKeySettings {
+public struct ChromaKeySettings {
     public var range: CGFloat = 0.1
     public var softness: CGFloat = 0.1
     public var edgeDesaturation: CGFloat = 0.5
@@ -17,8 +17,8 @@ extension View {
     ///   - softness: The fade of the edge of the removed background. *(Fraction from 0.0 to 1.0, default at 0.1)*
     ///   - edgeDesaturation: The amount of desaturation to the edges. *(Fraction from 0.0 to 1.0, default at 0.5)*
     ///   - alphaCrop: A alpha crop factor. *(Fraction from 0.0 to 1.0, default at 0.5)*
-    public func removeGreenScreen(settings: MUIChromaKeySettings = .init(),
-                            isEnabled: Bool = true) -> some View {
+    public func removeGreenScreen(settings: ChromaKeySettings = .init(),
+                                  isEnabled: Bool = true) -> some View {
         chromaKey(color: Color(red: 0.0, green: 1.0, blue: 0.0),
                   settings: settings,
                   isEnabled: isEnabled)
@@ -32,7 +32,7 @@ extension View {
     ///   - edgeDesaturation: The amount of desaturation to the edges. *(Fraction from 0.0 to 1.0, default at 0.5)*
     ///   - alphaCrop: A alpha crop factor. *(Fraction from 0.0 to 1.0, default at 0.5)*
     public func chromaKey(color: Color,
-                          settings: MUIChromaKeySettings = .init(),
+                          settings: ChromaKeySettings = .init(),
                           isEnabled: Bool = true) -> some View {
         let function = ShaderFunction(library: .bundle(.module),
                                       name: "chromaKey")

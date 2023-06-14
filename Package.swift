@@ -13,6 +13,9 @@ let package = Package(
             name: "MetalUI",
             targets: ["MetalUI"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.1.0"),
+    ],
     targets: [
         .target(
             name: "MetalUI"),
