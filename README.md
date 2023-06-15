@@ -128,6 +128,63 @@ struct ContentView: View {
 }
 ```
 
+## Edge
+
+<img src="https://github.com/heestand-xyz/MetalUI-Docs/blob/main/Assets/Effects/Edge/MetalUI%20Edge.png?raw=true" width=400/>
+
+```swift
+import SwiftUI
+import MetalUI
+
+struct ContentView: View {
+    
+    var content: some View {
+        
+    }
+    
+    var body: some View {
+        HStack {
+            Image(systemName: "globe")
+            Text("Hello, World!")
+        }
+        .font(.system(size: 50, weight: .bold))
+        .padding()
+        .edge()
+    }
+}
+
+#Preview {
+    ContentView()
+}
+```
+
+## Pixelate
+
+<img src="https://github.com/heestand-xyz/MetalUI-Docs/blob/main/Assets/Effects/Pixelate/MetalUI%20Pixelate.png?raw=true" width=400/>
+
+```swift
+import SwiftUI
+import MetalUI
+
+struct ContentView: View {
+    
+    var body: some View {
+        VStack {
+            Text("Hello, World!")
+            Text("Hello, World!")
+                .pixelate()
+            Text("Hello, World!")
+                .quickPixelate()
+        }
+        .font(.largeTitle)
+    }
+}
+
+#Preview {
+    ContentView()
+}
+```
+
 ## Noise
 
 <img src="https://github.com/heestand-xyz/MetalUI-Docs/blob/main/Assets/Content/Noise/MetalUI%20Noise.png?raw=true" width=200/>
