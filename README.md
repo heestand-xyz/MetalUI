@@ -5,8 +5,52 @@
 ## Install
 
 ```swift
-.package(url: "https://github.com/heestand-xyz/MetalUI", from: "0.0.1")
+.package(url: "https://github.com/heestand-xyz/MetalUI", from: "0.1.0")
 ```
+
+## Gradient Blur
+
+
+| <img src="https://github.com/heestand-xyz/MetalUI-Docs/blob/main/Assets/Effects/Gradient%20Blur/MetalUI%20Gradient%20Blur%20Vertical.png?raw=true" width=200/> | 
+<img src="https://github.com/heestand-xyz/MetalUI-Docs/blob/main/Assets/Effects/Gradient%20Blur/MetalUI%20Gradient%20Blur%20Horizontal.png?raw=true" width=200/> | 
+
+
+```swift
+import SwiftUI
+import MetalUI
+
+struct ContentView: View {
+    
+    @State var radius: CGFloat = 0.0
+    @State var curve: CGFloat = 1
+    
+    var body: some View {
+        VStack {
+            Slider(value: $radius, in: 0...100)
+            Slider(value: $curve, in: 0...2)
+            HStack(spacing: 0) {
+                Color.red
+                Color.yellow
+                Color.green
+                Color.cyan
+                Color.blue
+            }
+            .padding()
+            .gradientBlur(
+                axis: .vertical,
+                radii: [0.0, radius],
+                curve: curve
+            )
+        }
+    }
+}
+
+#Preview {
+    ContentView()
+}
+```
+
+`GradientBlurStop` can also be used for more fine grained control over the stops.
 
 ## Green Screen
 
@@ -14,7 +58,6 @@
 <img src="https://github.com/heestand-xyz/MetalUI-Docs/blob/main/Assets/Effects/Chroma%20Key/MetalUI%20Green%20Screen%20B.jpeg?raw=true" width=200/> | 
 
 ```swift
-
 import SwiftUI
 import MetalUI
 
