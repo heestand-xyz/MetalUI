@@ -10,23 +10,37 @@ struct DisplaceView<Source: View, Content: View>: View {
     @State private var image: Image?
     
     var body: some View {
-        source
-            .opacity(0)
-            .overlay {
-                GeometryReader { proxy in
+        GeometryReader { proxy in
+            source
+                .opacity(0)
+                .overlay {
                     if let image {
-                        let function = ShaderFunction(library: .bundle(.module),
-                                                      name: "displace")
+                        let function = ShaderFunction(
+                            library: .bundle(.module),
+                            name: "displace"
+                        )
                         let shader = Shader(function: function, arguments: [
                             .image(image),
                             .float(distance)
                         ])
-                        source.distortionEffect(shader, maxSampleOffset: proxy.size)
+                        let maxSampleOffset = CGSize(
+                            width: distance,
+                            height: distance
+                        )
+                        source.distortionEffect(
+                            shader,
+                            maxSampleOffset: maxSampleOffset
+                        )
                     }
                 }
                 .task {
                     while true {
-                        let renderer = ImageRenderer(content: content())
+                        let renderer = ImageRenderer(
+                            content: content()
+                                .frame(width: proxy.size.width,
+                                       height: proxy.size.height)
+                                .colorScheme(.dark)
+                        )
                         renderer.scale = .pixelsPerPoint
 #if os(macOS)
                         guard let nsImage: NSImage = renderer.nsImage else { return }
@@ -42,13 +56,14 @@ struct DisplaceView<Source: View, Content: View>: View {
                         }
                     }
                 }
-            }
+        }
     }
 }
 
 extension View {
     
-    public func displace<Content: View>(distance: CGFloat = 1.0,
+    @available(*, deprecated, message: "Not working yet...")
+    public func displace<Content: View>(_ distance: CGFloat,
                                         continuous: Bool = false,
                                         _ content: @escaping () -> Content) -> some View {
         DisplaceView(distance: distance,

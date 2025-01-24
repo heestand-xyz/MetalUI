@@ -4,11 +4,15 @@
 //
 
 #include <metal_stdlib>
+#include <SwiftUI/SwiftUI_Metal.h>
 using namespace metal;
 
 [[ stitchable ]] float2 displace(float2 position,
-                                 texture2d<half> image,
+                                 SwiftUI::Layer layer,
                                  float distance) {
-    // https://github.com/robb/ShaderBugs//
-    return position;
+    // Layer does still not work with distortion effects as of 2025
+    // https://github.com/robb/ShaderBugs
+    half4 color = layer.sample(position);
+    float2 offset = float2(color.rg) * distance;
+    return position - offset;
 }
