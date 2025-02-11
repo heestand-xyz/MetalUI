@@ -15,7 +15,7 @@ struct SizeReader<Content: View>: View {
                         .onAppear {
                             size = proxy.size
                         }
-                        .onChange(of: proxy.size) { newSize in
+                        .onChange(of: proxy.size) { _, newSize in
                             size = newSize
                         }
                 }
