@@ -13,7 +13,7 @@ public struct GradientBlurStop {
 
 extension View {
 
-    /// **Gradient Blur** runs a gradient blur over and over again, each step is known as a pass.
+    /// **Gradient Blur** runs a 2D gradient blur over and over again, each step is known as a pass.
     ///
     /// The radii controls the blur radius at uniformly distributed locations. At least 2 radii needs to be provided.
     ///
@@ -44,7 +44,7 @@ extension View {
         }
     }
     
-    /// **Gradient Blur** runs a gradient blur over and over again, each step is known as a pass.
+    /// **Gradient Blur** runs a 2D gradient blur over and over again, each step is known as a pass.
     ///
     /// The stops controls the blur radius at a specific location.
     ///
@@ -69,6 +69,8 @@ extension View {
             self
         }
     }
+    
+    // MARK: - Multi Pass
     
     private func anyGradientBlur(
         axis: Axis,
@@ -98,7 +100,7 @@ extension View {
     ) -> AnyView {
         multipliers.reduce(AnyView(self)) { view, multiplier in
             AnyView(
-                view.gradientBlurPass(
+                view.gradientBlurPassShader(
                     axis: axis,
                     stops: stops,
                     multiplier: multiplier,
@@ -108,7 +110,9 @@ extension View {
         }
     }
     
-    private func gradientBlurPass(
+    // MARK: - Mutli Pass Shader
+    
+    private func gradientBlurPassShader(
         axis: Axis,
         stops: [GradientBlurStop],
         multiplier: CGFloat,

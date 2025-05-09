@@ -24,7 +24,9 @@ using namespace metal;
     float2 uv = position / bounds.zw;
     float pixelLocation = axis == 0.0 ? uv.x : uv.y;
     
-    float interpolatedRadius = radii[0];
+    float lastLocation = locations[int(locationCount) - 1];
+    bool isAtLast = pixelLocation >= lastLocation;
+    float interpolatedRadius = isAtLast ? radii[int(locationCount) - 1] : radii[0];
     for (int index = 0; index < int(locationCount); index++) {
         float location = locations[index];
         float radius = radii[index];
